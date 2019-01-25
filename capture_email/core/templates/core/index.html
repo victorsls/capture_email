@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <div class="row h-100">
+                    <div class="offset-2 my-auto">
+                        <h3 class="font-weight-bold">
+                            Workshop: <br>
+                            Faça a coisa certa
+                        </h3>
+                        <p>
+                            Receba uma série de vídeos importante que vão te mostrar
+                            <br>como fazer a coisa certa na hora certa!
+                            <br> <br>
+                            Inscreva-se no formulário abaixo para participar!
+
+                        </p>
+
+                        <form class="form-inline" method="post">
+                            {% csrf_token %}
+                            {{ form.email }}
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <div class="col-12 text-center mt-2">
+                                {% if form.email.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ form.email.errors|first }}
+                                    </div>
+                                {% elif messages %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}success{% endif %}"
+                                             role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <img src="{% static 'img/bg-man.png' %}" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
+    </div>
+{% endblock %}
