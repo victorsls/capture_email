@@ -18,9 +18,9 @@ class Index(FormView):
         form = self.form_class(request.POST)
         if form.is_valid():
             try:
-                id = '6b4a7c21ea'
+                id_list = '6b4a7c21ea'
                 mail = APIMailChimp()
-                mail.add_email(id,  form.cleaned_data.get('email'))
+                mail.add_email(id_list,  form.cleaned_data.get('email'))
                 messages.success(request, 'E-mail cadastrado com suceso!')
                 return redirect(self.success_url)
             except BaseException as error:

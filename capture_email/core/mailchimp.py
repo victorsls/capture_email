@@ -12,7 +12,7 @@ class APIMailChimp(object):
             'status': 'subscribed',
         })
 
-    def add_tag(self, list_id, segment_id):
+    def add_tag(self, list_id='6b4a7c21ea', segment_id='2657'):
         members = self.client.lists.members.all(list_id=list_id, get_all=True).get('members')
         members_to_add = []
         for member in members:
