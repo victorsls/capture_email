@@ -1,1 +1,1 @@
-web: gunicorn app.wsgi
+web: gunicorn capture_email.wsgi
